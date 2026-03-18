@@ -1,6 +1,7 @@
 import pytest
 from rest_framework.test import APIClient
 from employees.models import Employee
+from decimal import Decimal
 
 @pytest.mark.django_db
 def test_salary_calculation_india():
