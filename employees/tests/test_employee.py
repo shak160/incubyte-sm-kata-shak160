@@ -6,13 +6,13 @@ def test_create_employee():
     client = APIClient()
 
     data = {
-        "full_name": "John Doe",
-        "job_title": "Software Engineer",
+        "full_name": "Shakiv Ali",
+        "job_title": "Backend Developer",
         "country": "India",
-        "salary": 100000
+        "salary": 50000
     }
 
-    response = client.post("/employees/", data)
+    response = client.post("/employees/", data,format="json")
 
     assert response.status_code == 201
-    assert response.data["full_name"] == "John Doe"
+    assert response.data["full_name"] == "Shakiv Ali"
