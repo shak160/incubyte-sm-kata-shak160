@@ -8,11 +8,32 @@ from rest_framework.views import APIView
 from employees.serializers import CountrySalaryMetrics
 
 class EmployeeViewSet(viewsets.ModelViewSet):
-    """
-    A ViewSet for viewing and editing employee instances.
-    """
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
+
+    # @action(detail=True, methods=['get'])
+    # def salary(self, request, pk=None):
+    #     employee = self.get_object()
+    #     gross = employee.salary
+
+    #     if employee.country == "India":
+    #         tds = gross * 0.10
+    #     elif employee.country == "United States":
+    #         tds = gross * 0.12
+    #     else:
+    #         tds = 0
+
+    #     return Response({
+    #         "gross_salary": gross,
+    #         "tds": tds,
+    #         "net_salary": gross - tds
+    #     })
+
+    # @action(detail=False, methods=['get'])
+    # def high_salary(self, request):
+    #     employees = Employee.objects.filter(salary__gt=100000)
+    #     serializer = self.get_serializer(employees, many=True)
+    #     return Response(serializer.data)
 
 class SalaryMetricsView(APIView):
     def get(self, request):
